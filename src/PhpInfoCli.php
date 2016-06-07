@@ -20,7 +20,6 @@ class PhpInfoCli
 
     public function __construct()
     {
-        $this->parsePhpInfo();
 
         $this->extensions = get_loaded_extensions();
 
