@@ -12,8 +12,7 @@ use Stringizer\Stringizer;
  */
 class PhpInfoParser
 {
-
-    private $rawOutput;
+    private $dataIn;
 
     private $data;
 
@@ -22,22 +21,61 @@ class PhpInfoParser
 
     public function parse()
     {
-        $this->rawOutput = shell_exec('echo "<?php phpinfo(); ?>" | php');
-
-        $datas = explode("\n", $this->rawOutput);
-
-       // print_r($datas);
+        $this->dataIn = explode("\n", shell_exec('echo "<?php phpinfo(); ?>" | php'));
 
         $this->data = array();
 
-        foreach ($datas as $data) {
+        $this->parseSystemInfo();
+
+        $this->parseModules();
+    }
+
+    private function parseSystemInfo()
+    {
+        foreach ($this->dataIn as $data) {
             $row = explode("=>", trim($data));
             if (isset($row[1])) {
                 $this->data[trim($row[0])] = $row[1];
             }
         }
+    }
 
-        // print_r($this->data);
+    private function parseModules()
+    {
+
+        $extensions = get_loaded_extensions();
+
+        //print_r($extensions);
+
+       // print_r($this->dataIn);
+
+        //die;
+
+        //foreach ($this->dataIn as $data) {
+        $len = count($this->dataIn);
+        for($i=0; $i<$len; $i++) {
+
+            $row = explode("=>", trim($this->dataIn[$i]));
+
+            if (in_array($row[0], $extensions) && $row[0] != 'Core') {
+
+
+                echo $row[0] . PHP_EOL;
+
+                // Move past next row because its blank
+                $i++;
+
+                echo PHP_EOL . $this->dataIn[$i] . PHP_EOL;
+
+                die;
+            }
+
+
+        }
+
+        die;
+
+
     }
 
     private function getByKey($key)
