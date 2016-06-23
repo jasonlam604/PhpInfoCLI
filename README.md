@@ -2,12 +2,40 @@
 
 PHP Info at Command Line
 
-Currently still under development, Release 0.1.0 has provide some basic info, see screensshot
+## Overview
+
+Provide PHP Info at command line with the goal of providing most if not all the info you would see using phpinfo() when displayed on a web page.
+
+### Availalboe Info:
+
+* PHP Version
+* System Info
+* Build Date
+* Configure Command(s)
+* Server Api
+* Virtual Directory Support
+* Configuration File (php.ini) Path
+* Loaded Configuration File
+* Scan this dir for additional .ini file
+* PHP API
+* PHP Extensions
+* Zend Extension
+* Zend Extension Build
+* PHP Extension Build
+* Debug Build
+* Thread Safety
+* Zend Signal Handling
+* Zend Memory Manager
+* Zend Multibyte Support
+* IPv6 Support
+* DTrace
+* Registered PHP Streams
+* Registered Stream Socket Transports
+* Registered Stream Filters
+
+### Screenshot
 
 ![Release 0.1.0 Screenshot](/screenshots/PhpInfoCLI_Screenshot_Release_0_1_0.png?raw=true "Screenshot Release 0.1.0")
-
-
-## Overview
 
 ## Install Phar
 
