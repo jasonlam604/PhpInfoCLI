@@ -1,8 +1,6 @@
 <?php
 namespace PhpInfoCLI;
 
-use Stringizer\Stringizer;
-
 /**
  * PhpInfoParser
  *
@@ -12,6 +10,7 @@ use Stringizer\Stringizer;
  */
 class PhpInfoParser
 {
+
     private $dataIn;
 
     private $data;
@@ -26,8 +25,6 @@ class PhpInfoParser
         $this->data = array();
 
         $this->parseSystemInfo();
-
-        $this->parseModules();
     }
 
     private function parseSystemInfo()
@@ -38,44 +35,6 @@ class PhpInfoParser
                 $this->data[trim($row[0])] = $row[1];
             }
         }
-    }
-
-    private function parseModules()
-    {
-
-        $extensions = get_loaded_extensions();
-
-        //print_r($extensions);
-
-       // print_r($this->dataIn);
-
-        //die;
-
-        //foreach ($this->dataIn as $data) {
-        $len = count($this->dataIn);
-        for($i=0; $i<$len; $i++) {
-
-            $row = explode("=>", trim($this->dataIn[$i]));
-
-            if (in_array($row[0], $extensions) && $row[0] != 'Core') {
-
-
-                echo $row[0] . PHP_EOL;
-
-                // Move past next row because its blank
-                $i++;
-
-                echo PHP_EOL . $this->dataIn[$i] . PHP_EOL;
-
-                die;
-            }
-
-
-        }
-
-        die;
-
-
     }
 
     private function getByKey($key)
