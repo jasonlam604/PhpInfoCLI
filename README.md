@@ -2,7 +2,9 @@
 
 PHP Info at Command Line
 
-Currently Under Development
+Currently still under development, Release 0.1.0 has provide some basic info, see screensshot
+
+![Release 0.1.0 Screenshot](/screenshots/PhpInfoCLI_Screenshot_Release_0_1_0.png?raw=true "Screenshot Release 0.1.0")
 
 
 ## Overview
@@ -20,7 +22,7 @@ php -d phar.readonly=0 phar-builder.phar package ./composer.json
 ```
 
 ```bash
-chmod 755 ./bin/phpinfocli.phar 
+chmod 0755 ./bin/phpinfocli.phar 
 ```
 
 ```bash
